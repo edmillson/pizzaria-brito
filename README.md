@@ -77,7 +77,7 @@ Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes
 
 ## 👤 Autor
 
-Desenvolvido por [Seu Nome] - [Ano]
+Desenvolvido por [Edmilson de Brito] - [2025]
 
 ---
 
