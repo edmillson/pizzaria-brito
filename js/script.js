@@ -62,18 +62,56 @@ function initMap() {
     // Inicializar o mapa se o elemento existir
     const mapElement = document.getElementById('mapa');
     if (mapElement) {
-        // Criar mapa
-        const map = L.map('mapa').setView([lat, lng], 15);
+        // Criar mapa com opções melhoradas
+        const map = L.map('mapa', {
+            center: [lat, lng],
+            zoom: 16,
+            zoomControl: true,
+            scrollWheelZoom: true,
+            dragging: true
+        });
         
-        // Adicionar camada do OpenStreetMap
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-            maxZoom: 19
+        // Adicionar camada com estilo melhorado para visualização de ruas e prédios
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            subdomains: 'abcd',
+            maxZoom: 20
         }).addTo(map);
         
+        // Adicionar marcador personalizado com popup
+        const pizzaIcon = L.icon({
+            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+        });
+        
+        // Conteúdo do popup com informações formatadas
+        const popupContent = `
+            <strong>Pizzaria Brito</strong>
+            <p>Belém, SN - Zona Rural<br>
+            Cocal dos Alves - PI<br>
+            CEP: 64238-000</p>
+            <p><i class="fas fa-phone-alt"></i> (86) 98161-0248</p>
+        `;
+        
         // Adicionar marcador com popup
-        const marker = L.marker([lat, lng]).addTo(map);
-        marker.bindPopup("<strong>Pizzaria Brito</strong><br>Belém, SN - Zona Rural<br>Cocal dos Alves - PI").openPopup();
+        const marker = L.marker([lat, lng], {icon: pizzaIcon}).addTo(map);
+        marker.bindPopup(popupContent, {
+            maxWidth: 250,
+            minWidth: 200,
+            closeButton: true
+        }).openPopup();
+        
+        // Adicionar círculo para destacar a área
+        L.circle([lat, lng], {
+            color: 'rgba(231, 76, 60, 0.2)',
+            fillColor: 'rgba(231, 76, 60, 0.1)',
+            fillOpacity: 0.5,
+            radius: 150
+        }).addTo(map);
         
         // Ajustar tamanho do mapa em caso de redimensionamento
         window.addEventListener('resize', () => {
