@@ -173,6 +173,10 @@ header .container {
     white-space: nowrap; /* Evita quebra de linha no texto do logo */
 }
 
+nav {
+    transition: opacity 0.3s ease;
+}
+
 nav ul {
     display: flex;
     list-style: none;
@@ -210,6 +214,21 @@ nav ul li a:hover::after {
     font-size: 24px;
     cursor: pointer;
     color: var(--cor-escura);
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: var(--transicao);
+}
+
+.mobile-menu:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: var(--cor-primaria);
+}
+
+.mobile-menu:active {
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 /* Hero Section */
@@ -511,12 +530,43 @@ footer {
 }
 
 @media (max-width: 768px) {
+    /* Estilo para o menu mobile */
     nav {
         display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+        padding: 10px 0;
+        opacity: 1;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        gap: 0;
+        padding: 0 20px;
+    }
+    
+    nav ul li {
+        width: 100%;
+        border-bottom: 1px solid #eee;
+    }
+    
+    nav ul li:last-child {
+        border-bottom: none;
+    }
+    
+    nav ul li a {
+        display: block;
+        padding: 12px 0;
+        font-size: 16px;
     }
     
     .mobile-menu {
-        display: block;
+        display: flex;
     }
     
     .hero-content h2 {
@@ -548,5 +598,15 @@ footer {
     .logo img {
         height: calc(var(--logo-height-mobile) - 5px);
         margin-right: var(--logo-margin-mobile);
+    }
+    
+    /* Ajustes para menu em telas pequenas */
+    nav ul {
+        padding: 0 15px;
+    }
+    
+    nav ul li a {
+        font-size: 15px;
+        padding: 10px 0;
     }
 } 

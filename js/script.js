@@ -10,9 +10,26 @@ const navMenu = document.querySelector('nav');
 const formContato = document.getElementById('form-contato');
 const scrollLinks = document.querySelectorAll('a[href^="#"]');
 
-// Toggle Mobile Menu
-mobileMenuBtn.addEventListener('click', () => {
-    navMenu.style.display = navMenu.style.display === 'block' ? 'none' : 'block';
+// Toggle Mobile Menu com animação suave
+mobileMenuBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); // Previne que o evento se propague para o document
+    
+    if (navMenu.style.display === 'block') {
+        // Fechar o menu
+        navMenu.style.opacity = '0';
+        setTimeout(() => {
+            navMenu.style.display = 'none';
+        }, 300); // Corresponde à duração da transição CSS
+    } else {
+        // Abrir o menu
+        navMenu.style.display = 'block';
+        navMenu.style.opacity = '0';
+        
+        // Force reflow para que a transição funcione
+        navMenu.offsetHeight;
+        
+        navMenu.style.opacity = '1';
+    }
 });
 
 // Smooth Scroll para links internos
@@ -113,6 +130,11 @@ document.addEventListener('click', (e) => {
         !e.target.closest('nav') && 
         !e.target.closest('.mobile-menu') && 
         navMenu.style.display === 'block') {
-        navMenu.style.display = 'none';
+        
+        // Fechar o menu com animação suave
+        navMenu.style.opacity = '0';
+        setTimeout(() => {
+            navMenu.style.display = 'none';
+        }, 300); // Corresponde à duração da transição CSS
     }
 }); 
