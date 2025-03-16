@@ -20,6 +20,17 @@
     --sombra-padrao: 0 5px 15px rgba(0, 0, 0, 0.1);
     --borda-radius: 8px;
     --transicao: all 0.3s ease;
+    
+    /* Variáveis para tamanhos do logo - centralizadas para fácil ajuste */
+    --logo-height-desktop: 60px;
+    --logo-height-tablet: 50px;
+    --logo-height-mobile: 40px;
+    --logo-margin-desktop: 15px;
+    --logo-margin-tablet: 12px;
+    --logo-margin-mobile: 8px;
+    --logo-text-desktop: 24px;
+    --logo-text-tablet: 20px;
+    --logo-text-mobile: 18px;
 }
 
 body {
@@ -129,20 +140,37 @@ header .container {
     align-items: center;
 }
 
+/* 
+ * Logo Responsivo
+ * Esta implementação permite que o logo se ajuste a diferentes tamanhos de tela
+ * sem precisar carregar várias versões da imagem. Benefícios:
+ * 1. Melhor performance (apenas uma imagem é carregada)
+ * 2. Mantém a proporção original da imagem
+ * 3. Transições suaves entre os diferentes tamanhos de tela
+ * 4. Fácil manutenção através de variáveis CSS
+ */
 .logo {
     display: flex;
     align-items: center;
+    transition: var(--transicao);
 }
 
 .logo img {
-    height: 60px;
-    margin-right: 15px;
+    height: var(--logo-height-desktop);
+    margin-right: var(--logo-margin-desktop);
+    transition: var(--transicao);
+    /* Preservar proporção da imagem */
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
 }
 
 .logo h1 {
-    font-size: 24px;
+    font-size: var(--logo-text-desktop);
     margin-bottom: 0;
     color: var(--cor-primaria);
+    transition: var(--transicao);
+    white-space: nowrap; /* Evita quebra de linha no texto do logo */
 }
 
 nav ul {
@@ -470,6 +498,16 @@ footer {
     .contato-content {
         flex-direction: column;
     }
+    
+    /* Ajustes do logo para tablet */
+    .logo img {
+        height: var(--logo-height-tablet);
+        margin-right: var(--logo-margin-tablet);
+    }
+    
+    .logo h1 {
+        font-size: var(--logo-text-tablet);
+    }
 }
 
 @media (max-width: 768px) {
@@ -487,5 +525,28 @@ footer {
     
     .section-title {
         font-size: 30px;
+    }
+    
+    /* Ajustes do logo para mobile */
+    .logo img {
+        height: var(--logo-height-mobile);
+        margin-right: var(--logo-margin-mobile);
+    }
+    
+    .logo h1 {
+        font-size: var(--logo-text-mobile);
+    }
+}
+
+/* Ajustes adicionais para telas muito pequenas */
+@media (max-width: 480px) {
+    header .container {
+        padding: 0 10px;
+    }
+    
+    /* Ajuste fino para dispositivos muito pequenos */
+    .logo img {
+        height: calc(var(--logo-height-mobile) - 5px);
+        margin-right: var(--logo-margin-mobile);
     }
 } 
