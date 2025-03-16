@@ -53,72 +53,104 @@ scrollLinks.forEach(link => {
     });
 });
 
-// Inicialização do Mapa
-function initMap() {
-    // Coordenadas de Cocal dos Alves, PI (aproximadas)
-    const lat = -3.620023;
-    const lng = -41.445005;
-    
-    // Inicializar o mapa se o elemento existir
+// Inicialização do Mapa do Google Maps
+window.initGoogleMap = function() {
+    // Elemento do mapa
     const mapElement = document.getElementById('mapa');
+    
     if (mapElement) {
-        // Criar mapa com opções melhoradas
-        const map = L.map('mapa', {
-            center: [lat, lng],
-            zoom: 16,
+        // Coordenadas de Cocal dos Alves, PI (mais precisas)
+        const pizzariaLocation = { lat: -3.620023, lng: -41.445005 };
+        
+        // Opções do mapa
+        const mapOptions = {
+            center: pizzariaLocation,
+            zoom: 17,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            mapTypeControl: true,
+            mapTypeControlOptions: {
+                style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+                position: google.maps.ControlPosition.TOP_RIGHT
+            },
             zoomControl: true,
-            scrollWheelZoom: true,
-            dragging: true
-        });
+            zoomControlOptions: {
+                position: google.maps.ControlPosition.RIGHT_CENTER
+            },
+            streetViewControl: true,
+            fullscreenControl: true,
+            styles: [
+                {
+                    featureType: "poi.business",
+                    stylers: [{ visibility: "on" }]  // Mostrar pontos de interesse comerciais
+                },
+                {
+                    featureType: "road",
+                    elementType: "geometry",
+                    stylers: [{ visibility: "on" }]  // Destacar as ruas
+                },
+                {
+                    featureType: "building",
+                    elementType: "geometry",
+                    stylers: [{ visibility: "on" }]  // Destacar os edifícios
+                }
+            ]
+        };
         
-        // Adicionar camada com estilo melhorado para visualização de ruas e prédios
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-            subdomains: 'abcd',
-            maxZoom: 20
-        }).addTo(map);
+        // Criar o mapa
+        const map = new google.maps.Map(mapElement, mapOptions);
         
-        // Adicionar marcador personalizado com popup
-        const pizzaIcon = L.icon({
-            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
-            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
-            iconSize: [25, 41],
-            iconAnchor: [12, 41],
-            popupAnchor: [1, -34],
-            shadowSize: [41, 41]
-        });
-        
-        // Conteúdo do popup com informações formatadas
-        const popupContent = `
-            <strong>Pizzaria Brito</strong>
-            <p>Belém, SN - Zona Rural<br>
-            Cocal dos Alves - PI<br>
-            CEP: 64238-000</p>
-            <p><i class="fas fa-phone-alt"></i> (86) 98161-0248</p>
+        // Conteúdo da janela de informações
+        const infoContent = `
+            <div class="info-window">
+                <h3>Pizzaria Brito</h3>
+                <p>Belém, SN - Zona Rural</p>
+                <p>Cocal dos Alves - PI</p>
+                <p>CEP: 64238-000</p>
+                <p><a href="tel:+5586981610248">(86) 98161-0248</a></p>
+            </div>
         `;
         
-        // Adicionar marcador com popup
-        const marker = L.marker([lat, lng], {icon: pizzaIcon}).addTo(map);
-        marker.bindPopup(popupContent, {
-            maxWidth: 250,
-            minWidth: 200,
-            closeButton: true
-        }).openPopup();
+        // Criar janela de informações
+        const infowindow = new google.maps.InfoWindow({
+            content: infoContent,
+            maxWidth: 250
+        });
         
-        // Adicionar círculo para destacar a área
-        L.circle([lat, lng], {
-            color: 'rgba(231, 76, 60, 0.2)',
-            fillColor: 'rgba(231, 76, 60, 0.1)',
-            fillOpacity: 0.5,
-            radius: 150
-        }).addTo(map);
+        // Adicionar marcador
+        const marker = new google.maps.Marker({
+            position: pizzariaLocation,
+            map: map,
+            title: "Pizzaria Brito",
+            animation: google.maps.Animation.DROP
+        });
         
-        // Ajustar tamanho do mapa em caso de redimensionamento
+        // Abrir janela de informações ao clicar no marcador
+        marker.addListener("click", () => {
+            infowindow.open(map, marker);
+        });
+        
+        // Abrir a janela de informações automaticamente
+        infowindow.open(map, marker);
+        
+        // Adicionar círculo ao redor do marcador
+        const circle = new google.maps.Circle({
+            strokeColor: "#E74C3C",
+            strokeOpacity: 0.3,
+            strokeWeight: 2,
+            fillColor: "#E74C3C",
+            fillOpacity: 0.1,
+            map,
+            center: pizzariaLocation,
+            radius: 100
+        });
+        
+        // Ajustar o mapa ao redimensionar a janela
         window.addEventListener('resize', () => {
-            map.invalidateSize();
+            google.maps.event.trigger(map, 'resize');
+            map.setCenter(pizzariaLocation);
         });
     }
-}
+};
 
 // Animação de entrada para os cards de pizza
 const animateOnScroll = () => {
@@ -157,9 +189,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (footerAno) {
         footerAno.textContent = footerAno.textContent.replace('2023', anoAtual);
     }
-    
-    // Inicializar o mapa
-    initMap();
 });
 
 // Detectar cliques fora do menu mobile para fechá-lo
