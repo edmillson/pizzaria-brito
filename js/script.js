@@ -7,7 +7,6 @@
 // DOM Elements
 const mobileMenuBtn = document.querySelector('.mobile-menu');
 const navMenu = document.querySelector('nav');
-const formContato = document.getElementById('form-contato');
 const scrollLinks = document.querySelectorAll('a[href^="#"]');
 
 // Toggle Mobile Menu com animação suave
@@ -54,35 +53,33 @@ scrollLinks.forEach(link => {
     });
 });
 
-// Validação do Formulário de Contato
-if (formContato) {
-    formContato.addEventListener('submit', function(e) {
-        e.preventDefault();
+// Inicialização do Mapa
+function initMap() {
+    // Coordenadas de Cocal dos Alves, PI (aproximadas)
+    const lat = -3.620023;
+    const lng = -41.445005;
+    
+    // Inicializar o mapa se o elemento existir
+    const mapElement = document.getElementById('mapa');
+    if (mapElement) {
+        // Criar mapa
+        const map = L.map('mapa').setView([lat, lng], 15);
         
-        // Pegar valores do formulário
-        const nome = document.getElementById('nome').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const telefone = document.getElementById('telefone').value.trim();
-        const mensagem = document.getElementById('mensagem').value.trim();
+        // Adicionar camada do OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            maxZoom: 19
+        }).addTo(map);
         
-        // Validação simples
-        if (nome === '' || email === '' || mensagem === '') {
-            alert('Por favor, preencha todos os campos obrigatórios.');
-            return false;
-        }
+        // Adicionar marcador com popup
+        const marker = L.marker([lat, lng]).addTo(map);
+        marker.bindPopup("<strong>Pizzaria Brito</strong><br>Belém, SN - Zona Rural<br>Cocal dos Alves - PI").openPopup();
         
-        // Validação de email
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            alert('Por favor, insira um endereço de e-mail válido.');
-            return false;
-        }
-        
-        // Aqui você pode adicionar o código para enviar o formulário via AJAX
-        // Simulação de envio bem-sucedido
-        alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
-        formContato.reset();
-    });
+        // Ajustar tamanho do mapa em caso de redimensionamento
+        window.addEventListener('resize', () => {
+            map.invalidateSize();
+        });
+    }
 }
 
 // Animação de entrada para os cards de pizza
@@ -122,6 +119,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (footerAno) {
         footerAno.textContent = footerAno.textContent.replace('2023', anoAtual);
     }
+    
+    // Inicializar o mapa
+    initMap();
 });
 
 // Detectar cliques fora do menu mobile para fechá-lo

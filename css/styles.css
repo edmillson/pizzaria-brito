@@ -351,7 +351,7 @@ nav ul li a:hover::after {
     gap: 40px;
 }
 
-.contato-info, .contato-form {
+.contato-info, .mapa-container {
     flex: 1;
 }
 
@@ -400,33 +400,44 @@ nav ul li a:hover::after {
     transform: translateY(-5px);
 }
 
-.contato-form h3 {
+/* Estilos para o mapa interativo */
+.mapa-container h3 {
     margin-bottom: 20px;
 }
 
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: 500;
-}
-
-.form-group input,
-.form-group textarea {
+.mapa-responsivo {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
+    height: 350px;
     border-radius: var(--borda-radius);
-    font-family: inherit;
-    font-size: 16px;
+    box-shadow: var(--sombra-padrao);
+    margin-bottom: 15px;
+    overflow: hidden;
 }
 
-.form-group textarea {
-    height: 150px;
-    resize: vertical;
+.mapa-info {
+    margin-top: 15px;
+}
+
+.mapa-info p {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.mapa-info i {
+    color: var(--cor-primaria);
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.mapa-info a {
+    color: var(--cor-primaria);
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+.mapa-info a:hover {
+    color: var(--cor-secundaria);
 }
 
 /* Footer */
@@ -586,9 +597,16 @@ footer {
     .logo h1 {
         font-size: var(--logo-text-mobile);
     }
+    
+    .contato-content {
+        flex-direction: column;
+    }
+    
+    .mapa-responsivo {
+        height: 300px;
+    }
 }
 
-/* Ajustes adicionais para telas muito pequenas */
 @media (max-width: 480px) {
     header .container {
         padding: 0 10px;
@@ -608,5 +626,9 @@ footer {
     nav ul li a {
         font-size: 15px;
         padding: 10px 0;
+    }
+    
+    .mapa-responsivo {
+        height: 250px;
     }
 } 
