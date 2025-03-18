@@ -1,93 +1,49 @@
 /* 
- * Estilos para a Pizzaria Brito
- * Desenvolvido por: [Seu Nome]
- * Data: [Data Atual]
+ * Estilos personalizados para a Pizzaria Brito
+ * Complementam o Bootstrap 5
  */
-
-/* Reset e Estilos Gerais */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 :root {
     --cor-primaria: #e74c3c;
     --cor-secundaria: #f39c12;
     --cor-escura: #2c3e50;
     --cor-clara: #ecf0f1;
-    --cor-texto: #333;
-    --sombra-padrao: 0 5px 15px rgba(0, 0, 0, 0.1);
-    --borda-radius: 8px;
-    --transicao: all 0.3s ease;
-    
-    /* Variáveis para tamanhos do logo - atualizadas conforme recomendação */
-    --logo-width-desktop: 180px;
-    --logo-height-desktop: 70px;
-    --logo-width-tablet: 150px;
-    --logo-height-tablet: 60px;
-    --logo-width-mobile: 120px;
-    --logo-height-mobile: 48px;
+    --logo-width-header: 80px;
+    --logo-height-header: 80px;
     --logo-width-footer: 120px;
     --logo-height-footer: 120px;
-    
-    --logo-margin-desktop: 15px;
-    --logo-margin-tablet: 12px;
-    --logo-margin-mobile: 8px;
-    --logo-text-desktop: 24px;
-    --logo-text-tablet: 20px;
-    --logo-text-mobile: 18px;
 }
 
 body {
     font-family: 'Poppins', sans-serif;
-    line-height: 1.6;
-    color: var(--cor-texto);
-    background-color: var(--cor-clara);
-}
-
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 700;
-    margin-bottom: 15px;
-    color: var(--cor-escura);
-}
-
-p {
-    margin-bottom: 15px;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
-a {
-    text-decoration: none;
-    color: var(--cor-primaria);
-    transition: var(--transicao);
-}
-
-a:hover {
-    color: var(--cor-secundaria);
-}
-
-.section-title {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 36px;
     position: relative;
-    padding-bottom: 15px;
 }
 
-.section-title::after {
+/* Estilos para o cabeçalho fixo */
+.navbar-brand img {
+    width: var(--logo-width-header);
+    height: var(--logo-height-header);
+}
+
+/* Estilos para o Hero */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../img/hero-background.jpg);
+    background-size: cover;
+    background-position: center;
+    color: white;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+}
+
+/* Animações para cards de pizza */
+.pizza-card.show {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* Estilizando os títulos das seções para manter a barra vermelha */
+h2.text-center.fw-bold.mb-5.position-relative.pb-3::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -98,810 +54,65 @@ a:hover {
     background-color: var(--cor-primaria);
 }
 
-.btn {
-    display: inline-block;
-    padding: 12px 25px;
-    background-color: var(--cor-primaria);
-    color: white;
-    border-radius: var(--borda-radius);
-    font-weight: 600;
-    transition: var(--transicao);
-    border: 2px solid var(--cor-primaria);
-    cursor: pointer;
-}
-
-.btn:hover {
-    background-color: transparent;
-    color: var(--cor-primaria);
-}
-
-.btn-outline {
-    background-color: transparent;
-    color: var(--cor-primaria);
-}
-
-.btn-outline:hover {
-    background-color: var(--cor-primaria);
-    color: white;
-}
-
-.center {
-    text-align: center;
-    margin: 30px 0;
-}
-
-/* Header e Navegação */
-header {
-    background-color: white;
-    box-shadow: var(--sombra-padrao);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    padding: 15px 0;
-}
-
-header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* 
- * Logo Responsivo
- * Esta implementação permite que o logo se ajuste a diferentes tamanhos de tela
- * sem precisar carregar várias versões da imagem. Benefícios:
- * 1. Melhor performance (apenas uma imagem é carregada)
- * 2. Mantém a proporção original da imagem
- * 3. Transições suaves entre os diferentes tamanhos de tela
- * 4. Fácil manutenção através de variáveis CSS
- */
-.logo {
-    display: flex;
-    align-items: center;
-    transition: var(--transicao);
-}
-
-.logo img {
-    height: var(--logo-height-desktop);
-    width: var(--logo-width-desktop);
-    margin-right: var(--logo-margin-desktop);
-    transition: var(--transicao);
-    /* Preservar proporção da imagem */
-    object-fit: contain;
-}
-
-.logo h1 {
-    font-size: var(--logo-text-desktop);
-    margin-bottom: 0;
-    color: var(--cor-primaria);
-    transition: var(--transicao);
-    white-space: nowrap; /* Evita quebra de linha no texto do logo */
-}
-
-nav {
-    transition: opacity 0.3s ease;
-}
-
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 30px;
-}
-
-nav ul li a {
-    color: var(--cor-escura);
-    font-weight: 500;
-    padding: 5px 0;
-    position: relative;
-}
-
-nav ul li a::after {
+h2.fw-bold.mb-4.position-relative.pb-3::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 0;
-    height: 2px;
+    width: 80px;
+    height: 3px;
     background-color: var(--cor-primaria);
-    transition: var(--transicao);
 }
 
-nav ul li a:hover {
+/* Estilizando abas do cardápio */
+.btn-outline-danger {
     color: var(--cor-primaria);
+    border-color: var(--cor-primaria);
 }
 
-nav ul li a:hover::after {
-    width: 100%;
+.btn-outline-danger:hover,
+.btn-outline-danger:active,
+.btn-outline-danger.active {
+    background-color: var(--cor-primaria) !important;
+    border-color: var(--cor-primaria) !important;
 }
 
-.mobile-menu {
-    display: none;
-    font-size: 24px;
-    cursor: pointer;
-    color: var(--cor-escura);
-    width: 40px;
-    height: 40px;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
-    transition: var(--transicao);
-}
-
-.mobile-menu:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-    color: var(--cor-primaria);
-}
-
-.mobile-menu:active {
-    background-color: rgba(0, 0, 0, 0.1);
-}
-
-/* Hero Section */
-.hero {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../img/hero-background.jpg');
-    background-size: cover;
-    background-position: center;
-    color: white;
-    text-align: center;
-    padding: 150px 0;
-}
-
-.hero-content {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.hero-content h2 {
-    font-size: 48px;
-    margin-bottom: 20px;
-    color: white;
-}
-
-.hero-content p {
-    font-size: 20px;
-    margin-bottom: 30px;
-}
-
-/* Seção de Destaques */
-.destaques {
-    padding: 80px 0;
-    background-color: white;
-}
-
-.pizza-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-}
-
-.pizza-card {
-    background-color: white;
-    border-radius: var(--borda-radius);
-    overflow: hidden;
-    box-shadow: var(--sombra-padrao);
-    transition: var(--transicao);
-}
-
-.pizza-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-}
-
-.pizza-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.pizza-card h3 {
-    padding: 15px 15px 5px;
-    font-size: 20px;
-}
-
-.pizza-card p {
-    padding: 0 15px 10px;
-    color: #666;
-}
-
-.pizza-card .preco {
-    display: block;
-    padding: 0 15px 15px;
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--cor-primaria);
-}
-
-/* Seção Sobre */
-.sobre {
-    padding: 80px 0;
-    background-color: var(--cor-clara);
-}
-
-.sobre-content {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-}
-
-.sobre-text {
-    flex: 1;
-}
-
-.sobre-text h2 {
-    text-align: left;
-}
-
-.sobre-text h2::after {
-    left: 0;
-    transform: none;
-}
-
-.sobre-img {
-    flex: 1;
-    max-width: 50%;
-}
-
-.sobre-img img {
-    width: 100%;
-    height: auto;
-    max-height: 400px;
-    object-fit: cover;
-    object-position: center;
-    border-radius: var(--borda-radius);
-    box-shadow: var(--sombra-padrao);
-}
-
-/* Seção de Contato */
-.contato {
-    padding: 80px 0;
-    background-color: white;
-}
-
-.contato-content {
-    display: flex;
-    gap: 40px;
-}
-
-.contato-info, .mapa-container {
-    flex: 1;
-}
-
-.info-item {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 30px;
-}
-
-.info-item i {
-    font-size: 24px;
-    color: var(--cor-primaria);
-    margin-right: 15px;
-    margin-top: 5px;
-}
-
-.info-item h3 {
-    font-size: 18px;
-    margin-bottom: 5px;
-}
-
-.social-media h3 {
-    margin-bottom: 15px;
-}
-
-.social-icons {
-    display: flex;
-    gap: 15px;
-}
-
-.social-icons a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
+.btn-danger {
     background-color: var(--cor-primaria);
-    color: white;
-    border-radius: 50%;
-    font-size: 18px;
-    transition: var(--transicao);
+    border-color: var(--cor-primaria);
 }
 
-.social-icons a:hover {
-    background-color: var(--cor-secundaria);
-    transform: translateY(-5px);
+.btn-danger:hover,
+.btn-danger:active {
+    background-color: #c0392b;
+    border-color: #c0392b;
 }
 
-/* Estilos para o mapa com iframe */
-.mapa-responsivo {
-    width: 100%;
-    height: 350px;
-    border-radius: var(--borda-radius);
-    box-shadow: var(--sombra-padrao);
-    margin-bottom: 15px;
-    overflow: hidden;
-    position: relative;
-    background-color: #f5f5f5;
-    border: 1px solid #ddd;
-}
-
-/* Overlay do botão "Ver mapa ampliado" */
-.mapa-overlay-botao {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 10;
-}
-
-.btn-mapa {
-    background-color: white;
-    color: var(--cor-primaria);
-    padding: 8px 12px;
-    border-radius: 4px;
-    font-size: 13px;
-    font-weight: 500;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    transition: all 0.3s ease;
-}
-
-.btn-mapa:hover {
-    background-color: var(--cor-primaria);
-    color: white;
-    transform: translateY(-2px);
-}
-
-.btn-mapa i {
-    font-size: 14px;
-}
-
-.mapa-responsivo iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
-    border-radius: var(--borda-radius);
-}
-
-.mapa-container h3 {
-    margin-bottom: 20px;
-}
-
-.mapa-info {
-    margin-top: 15px;
-    background-color: #f9f9f9;
-    padding: 15px;
-    border-radius: var(--borda-radius);
-    border-left: 3px solid var(--cor-primaria);
-}
-
-.mapa-info p {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.mapa-info p:last-child {
-    margin-bottom: 0;
-}
-
-.mapa-info i {
-    color: var(--cor-primaria);
-    margin-right: 10px;
-    font-size: 18px;
-    width: 20px;
-    text-align: center;
-}
-
-.mapa-info a {
-    color: var(--cor-primaria);
-    font-weight: 500;
-    text-decoration: underline;
-}
-
-.mapa-info a:hover {
-    color: var(--cor-secundaria);
-}
-
-/* Footer */
-footer {
-    background-color: var(--cor-escura);
-    color: white;
-    padding: 60px 0 20px;
-}
-
-.footer-content {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-    margin-bottom: 40px;
-}
-
-.footer-logo, .footer-links, .footer-contato {
-    flex: 1;
-    min-width: 250px;
-}
-
-.footer-logo img {
-    height: var(--logo-height-footer);
+/* Estilo para o logo no footer */
+footer img {
     width: var(--logo-width-footer);
-    margin-bottom: 15px;
+    height: var(--logo-height-footer);
 }
 
-.footer-links h3, .footer-contato h3 {
-    color: white;
-    margin-bottom: 20px;
-    position: relative;
-    padding-bottom: 10px;
-}
-
-.footer-links h3::after, .footer-contato h3::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 40px;
-    height: 2px;
-    background-color: var(--cor-primaria);
-}
-
-.footer-links ul {
-    list-style: none;
-}
-
-.footer-links ul li {
-    margin-bottom: 10px;
-}
-
-.footer-links ul li a {
-    color: #ccc;
-}
-
-.footer-links ul li a:hover {
-    color: var(--cor-primaria);
-    padding-left: 5px;
-}
-
-.footer-contato p {
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-}
-
-.footer-contato p i {
-    margin-right: 10px;
-    color: var(--cor-primaria);
-}
-
-.footer-bottom {
-    text-align: center;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.footer-bottom p {
-    margin-bottom: 10px;
-}
-
-/* Responsividade */
-@media (max-width: 992px) {
-    .sobre-content {
-        flex-direction: column;
-    }
-    
-    .sobre-img {
-        max-width: 100%;
-        width: 100%;
-        margin-top: 30px;
-    }
-    
-    .sobre-img img {
-        max-height: 350px;
-    }
-    
-    .contato-content {
-        flex-direction: column;
-    }
-    
-    /* Ajustes do logo para tablet */
-    .logo img {
-        height: var(--logo-height-tablet);
-        width: var(--logo-width-tablet);
-        margin-right: var(--logo-margin-tablet);
-    }
-    
-    .logo h1 {
-        font-size: var(--logo-text-tablet);
-    }
-}
-
+/* Ajustes para dispositivos móveis */
 @media (max-width: 768px) {
-    /* Estilo para o menu mobile */
-    nav {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: white;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-        z-index: 100;
-        padding: 10px 0;
-        opacity: 1;
+    .hero {
+        min-height: 400px;
     }
     
-    nav ul {
-        flex-direction: column;
-        gap: 0;
-        padding: 0 20px;
+    h2.text-center.fw-bold.mb-5.position-relative.pb-3::after,
+    h2.fw-bold.mb-4.position-relative.pb-3::after {
+        width: 60px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero {
+        min-height: 350px;
     }
     
-    nav ul li {
-        width: 100%;
-        border-bottom: 1px solid #eee;
-    }
-    
-    nav ul li:last-child {
-        border-bottom: none;
-    }
-    
-    nav ul li a {
-        display: block;
-        padding: 12px 0;
-        font-size: 16px;
-    }
-    
-    .mobile-menu {
-        display: flex;
-    }
-    
-    .hero-content h2 {
-        font-size: 36px;
-    }
-    
-    .section-title {
-        font-size: 30px;
-    }
-    
-    /* Ajustes do logo para mobile */
-    .logo img {
-        height: var(--logo-height-mobile);
-        width: var(--logo-width-mobile);
-        margin-right: var(--logo-margin-mobile);
-    }
-    
-    .logo h1 {
-        font-size: var(--logo-text-mobile);
-    }
-    
-    .contato-content {
-        flex-direction: column;
-    }
-    
-    .mapa-responsivo {
-        height: 300px;
-    }
-    
-    .sobre-img img {
-        max-height: 300px;
-    }
-}
-
-@media (max-width: 480px) {
-    header .container {
-        padding: 0 10px;
-    }
-    
-    /* Ajuste fino para dispositivos muito pequenos */
-    .logo img {
-        height: var(--logo-height-mobile);
-        width: var(--logo-width-mobile);
-    }
-    
-    /* Ajustes para menu em telas pequenas */
-    nav ul {
-        padding: 0 15px;
-    }
-    
-    nav ul li a {
-        font-size: 15px;
-        padding: 10px 0;
-    }
-    
-    .mapa-responsivo {
-        height: 250px;
-    }
-}
-
-/* Seção Cardápio */
-.cardapio {
-    padding: 80px 0;
-    background-color: var(--cor-clara);
-}
-
-/* Navegação do cardápio */
-.cardapio-nav {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-bottom: 40px;
-}
-
-.cardapio-btn {
-    padding: 12px 20px;
-    background-color: white;
-    border: 2px solid var(--cor-primaria);
-    border-radius: var(--borda-radius);
-    font-weight: 600;
-    color: var(--cor-primaria);
-    cursor: pointer;
-    transition: var(--transicao);
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
-}
-
-.cardapio-btn:hover, .cardapio-btn.active {
-    background-color: var(--cor-primaria);
-    color: white;
-}
-
-/* Categorias do cardápio */
-.cardapio-categoria {
-    display: none;
-    margin-bottom: 40px;
-}
-
-.cardapio-categoria.active {
-    display: block;
-    animation: fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.categoria-titulo {
-    text-align: center;
-    font-size: 28px;
-    margin-bottom: 10px;
-    color: var(--cor-escura);
-}
-
-.categoria-desc {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto 30px;
-    color: #666;
-}
-
-/* Grid de itens do menu */
-.menu-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
-    gap: 25px;
-}
-
-.menu-item {
-    background-color: white;
-    border-radius: var(--borda-radius);
-    padding: 20px;
-    box-shadow: var(--sombra-padrao);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: var(--transicao);
-}
-
-.menu-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-.menu-item-info {
-    flex: 1;
-}
-
-.menu-item-info h4 {
-    font-size: 20px;
-    margin-bottom: 5px;
-    color: var(--cor-escura);
-}
-
-.menu-item-info p {
-    color: #666;
-    font-size: 14px;
-    margin-bottom: 0;
-}
-
-.menu-item-preco {
-    margin-left: 20px;
-}
-
-.menu-item-preco span {
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--cor-primaria);
-    white-space: nowrap;
-}
-
-/* Informações adicionais */
-.cardapio-info {
-    margin-top: 50px;
-    margin-bottom: 30px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-}
-
-.info-box {
-    background-color: white;
-    border-left: 3px solid var(--cor-primaria);
-    padding: 15px;
-    border-radius: var(--borda-radius);
-    display: flex;
-    align-items: center;
-    box-shadow: var(--sombra-padrao);
-    max-width: 350px;
-}
-
-.info-box i {
-    font-size: 24px;
-    color: var(--cor-primaria);
-    margin-right: 15px;
-}
-
-.info-box p {
-    margin-bottom: 0;
-    font-size: 14px;
-}
-
-/* Responsividade para o cardápio */
-@media (max-width: 992px) {
-    .menu-grid {
-        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    }
-}
-
-@media (max-width: 768px) {
-    .cardapio-nav {
-        flex-direction: row;
-        overflow-x: auto;
-        padding-bottom: 10px;
-        gap: 10px;
-    }
-    
-    .cardapio-btn {
-        font-size: 14px;
-        padding: 10px 15px;
-        white-space: nowrap;
-    }
-    
-    .menu-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .menu-item {
-        padding: 15px;
-    }
-}
-
-@media (max-width: 480px) {
-    .menu-item {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .menu-item-preco {
-        margin-left: 0;
-        margin-top: 10px;
-    }
-    
-    .info-box {
-        width: 100%;
-        max-width: none;
+    .navbar-brand img {
+        width: calc(var(--logo-width-header) * 0.8);
+        height: calc(var(--logo-height-header) * 0.8);
     }
 } 
