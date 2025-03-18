@@ -90,6 +90,42 @@ document.addEventListener('DOMContentLoaded', () => {
     if (footerAno) {
         footerAno.textContent = footerAno.textContent.replace('2023', anoAtual);
     }
+
+    // Cardapio Tabs
+    const cardapioBtns = document.querySelectorAll('.cardapio-btn');
+    const cardapioCategorias = document.querySelectorAll('.cardapio-categoria');
+    
+    cardapioBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remover classe ativa de todos os botões
+            cardapioBtns.forEach(b => b.classList.remove('active'));
+            
+            // Adicionar classe ativa ao botão clicado
+            btn.classList.add('active');
+            
+            // Obter a categoria alvo
+            const targetId = btn.getAttribute('data-target');
+            
+            // Esconder todas as categorias
+            cardapioCategorias.forEach(cat => {
+                cat.classList.remove('active');
+            });
+            
+            // Mostrar a categoria alvo
+            document.getElementById(targetId).classList.add('active');
+        });
+    });
+
+    // Verificar se há um fragmento de URL apontando para o cardápio
+    if (window.location.hash === '#cardapio') {
+        // Rolar suavemente até a seção do cardápio
+        const cardapioSection = document.getElementById('cardapio');
+        if (cardapioSection) {
+            setTimeout(() => {
+                cardapioSection.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        }
+    }
 });
 
 // Detectar cliques fora do menu mobile para fechá-lo

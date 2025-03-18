@@ -338,9 +338,15 @@ nav ul li a:hover::after {
 
 .sobre-img {
     flex: 1;
+    max-width: 50%;
 }
 
 .sobre-img img {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+    object-position: center;
     border-radius: var(--borda-radius);
     box-shadow: var(--sombra-padrao);
 }
@@ -584,6 +590,16 @@ footer {
         flex-direction: column;
     }
     
+    .sobre-img {
+        max-width: 100%;
+        width: 100%;
+        margin-top: 30px;
+    }
+    
+    .sobre-img img {
+        max-height: 350px;
+    }
+    
     .contato-content {
         flex-direction: column;
     }
@@ -666,6 +682,10 @@ footer {
     .mapa-responsivo {
         height: 300px;
     }
+    
+    .sobre-img img {
+        max-height: 300px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -691,5 +711,197 @@ footer {
     
     .mapa-responsivo {
         height: 250px;
+    }
+}
+
+/* Seção Cardápio */
+.cardapio {
+    padding: 80px 0;
+    background-color: var(--cor-clara);
+}
+
+/* Navegação do cardápio */
+.cardapio-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.cardapio-btn {
+    padding: 12px 20px;
+    background-color: white;
+    border: 2px solid var(--cor-primaria);
+    border-radius: var(--borda-radius);
+    font-weight: 600;
+    color: var(--cor-primaria);
+    cursor: pointer;
+    transition: var(--transicao);
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+}
+
+.cardapio-btn:hover, .cardapio-btn.active {
+    background-color: var(--cor-primaria);
+    color: white;
+}
+
+/* Categorias do cardápio */
+.cardapio-categoria {
+    display: none;
+    margin-bottom: 40px;
+}
+
+.cardapio-categoria.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.categoria-titulo {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: var(--cor-escura);
+}
+
+.categoria-desc {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 30px;
+    color: #666;
+}
+
+/* Grid de itens do menu */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+    gap: 25px;
+}
+
+.menu-item {
+    background-color: white;
+    border-radius: var(--borda-radius);
+    padding: 20px;
+    box-shadow: var(--sombra-padrao);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--transicao);
+}
+
+.menu-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.menu-item-info {
+    flex: 1;
+}
+
+.menu-item-info h4 {
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: var(--cor-escura);
+}
+
+.menu-item-info p {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+.menu-item-preco {
+    margin-left: 20px;
+}
+
+.menu-item-preco span {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--cor-primaria);
+    white-space: nowrap;
+}
+
+/* Informações adicionais */
+.cardapio-info {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.info-box {
+    background-color: white;
+    border-left: 3px solid var(--cor-primaria);
+    padding: 15px;
+    border-radius: var(--borda-radius);
+    display: flex;
+    align-items: center;
+    box-shadow: var(--sombra-padrao);
+    max-width: 350px;
+}
+
+.info-box i {
+    font-size: 24px;
+    color: var(--cor-primaria);
+    margin-right: 15px;
+}
+
+.info-box p {
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+/* Responsividade para o cardápio */
+@media (max-width: 992px) {
+    .menu-grid {
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .cardapio-nav {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 10px;
+        gap: 10px;
+    }
+    
+    .cardapio-btn {
+        font-size: 14px;
+        padding: 10px 15px;
+        white-space: nowrap;
+    }
+    
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .menu-item {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .menu-item-preco {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+    
+    .info-box {
+        width: 100%;
+        max-width: none;
     }
 } 

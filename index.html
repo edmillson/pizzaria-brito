@@ -82,6 +82,262 @@
         </div>
     </section>
 
+    <section id="cardapio" class="cardapio">
+        <div class="container">
+            <h2 class="section-title">Nosso Cardápio</h2>
+            
+            <!-- Navegação do cardápio -->
+            <div class="cardapio-nav">
+                <button class="cardapio-btn active" data-target="pizzas-tradicionais">Pizzas Tradicionais</button>
+                <button class="cardapio-btn" data-target="pizzas-especiais">Pizzas Especiais</button>
+                <button class="cardapio-btn" data-target="bebidas">Bebidas</button>
+                <button class="cardapio-btn" data-target="sobremesas">Sobremesas</button>
+            </div>
+            
+            <!-- Pizzas Tradicionais -->
+            <div class="cardapio-categoria active" id="pizzas-tradicionais">
+                <h3 class="categoria-titulo">Pizzas Tradicionais</h3>
+                <p class="categoria-desc">Nossas pizzas tradicionais são preparadas com massa artesanal, molho de tomate caseiro e ingredientes frescos de alta qualidade.</p>
+                
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Margherita</h4>
+                            <p>Molho de tomate, mussarela, tomate e manjericão fresco.</p>
+                        </div>
+                        <div class="menu-item-preco">
+                            <span>R$ 49,90</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Calabresa</h4>
+                            <p>Molho de tomate, mussarela, calabresa e cebola.</p>
+                        </div>
+                        <div class="menu-item-preco">
+                            <span>R$ 52,90</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Portuguesa</h4>
+                            <p>Molho de tomate, mussarela, presunto, ovo, cebola e ervilha.</p>
+                        </div>
+                        <div class="menu-item-preco">
+                            <span>R$ 55,90</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Quatro Queijos</h4>
+                            <p>Molho de tomate, mussarela, provolone, parmesão e gorgonzola.</p>
+                        </div>
+                        <div class="menu-item-preco">
+                            <span>R$ 56,90</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Frango com Catupiry</h4>
+                            <p>Molho de tomate, mussarela, frango desfiado e catupiry.</p>
+                        </div>
+                        <div class="menu-item-preco">
+                            <span>R$ 54,90</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Pepperoni</h4>
+                            <p>Molho de tomate, mussarela e pepperoni.</p>
+                        </div>
+                        <div class="menu-item-preco">
+                            <span>R$ 58,90</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pizzas Especiais -->
+            <div class="cardapio-categoria" id="pizzas-especiais">
+                <h3 class="categoria-titulo">Pizzas Especiais</h3>
+                <p class="categoria-desc">Nossas pizzas especiais combinam ingredientes exclusivos para criar sabores únicos que só encontrará aqui.</p>
+                
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Especial Brito</h4>
+                            <p>Nossa pizza exclusiva com calabresa, bacon, cebola caramelizada, mussarela e catupiry.</p>
+                        </div>
+                        <div class="menu-item-preco">
+                            <span>R$ 59,90</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Nordestina</h4>
+                            <p>Molho de tomate, mussarela, carne de sol desfiada, cebola e cream cheese.</p>
+                        </div>
+                        <div class="menu-item-preco">
+                            <span>R$ 62,90</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Camarão</h4>
+                            <p>Molho de tomate, mussarela, camarão ao alho e óleo, pimentão e azeitonas.</p>
+                        </div>
+                        <div class="menu-item-preco">
+                            <span>R$ 68,90</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Vegetariana Especial</h4>
+                            <p>Molho de tomate, mussarela, abobrinha, berinjela, pimentão, cebola, tomate e rúcula.</p>
+                        </div>
+                        <div class="menu-item-preco">
+                            <span>R$ 56,90</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bebidas -->
+            <div class="cardapio-categoria" id="bebidas">
+                <h3 class="categoria-titulo">Bebidas</h3>
+                <p class="categoria-desc">Complemente sua refeição com nossas opções de bebidas.</p>
+                
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Refrigerante Lata</h4>
+                            <p>Coca-Cola, Guaraná Antarctica, Fanta, Sprite.</p>
+                        </div>
+                        <div class="menu-item-preco">
+                            <span>R$ 5,90</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Refrigerante 2L</h4>
+                            <p>Coca-Cola, Guaraná Antarctica, Fanta, Sprite.</p>
+                        </div>
+                        <div class="menu-item-preco">
+                            <span>R$ 12,90</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Suco Natural</h4>
+                            <p>Laranja, abacaxi, maracujá, limão ou uva.</p>
+                        </div>
+                        <div class="menu-item-preco">
+                            <span>R$ 8,90</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Água Mineral</h4>
+                            <p>Com ou sem gás (500ml).</p>
+                        </div>
+                        <div class="menu-item-preco">
+                            <span>R$ 3,90</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Cerveja</h4>
+                            <p>Brahma, Skol, Heineken (lata 350ml).</p>
+                        </div>
+                        <div class="menu-item-preco">
+                            <span>R$ 6,90</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sobremesas -->
+            <div class="cardapio-categoria" id="sobremesas">
+                <h3 class="categoria-titulo">Sobremesas</h3>
+                <p class="categoria-desc">Finalize sua refeição com nossas deliciosas opções de sobremesas.</p>
+                
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Pizza de Chocolate</h4>
+                            <p>Chocolate ao leite, granulado e morangos.</p>
+                        </div>
+                        <div class="menu-item-preco">
+                            <span>R$ 45,90</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Pizza de Banana</h4>
+                            <p>Banana, canela, leite condensado e doce de leite.</p>
+                        </div>
+                        <div class="menu-item-preco">
+                            <span>R$ 43,90</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Petit Gateau</h4>
+                            <p>Bolo quente de chocolate com sorvete de creme.</p>
+                        </div>
+                        <div class="menu-item-preco">
+                            <span>R$ 18,90</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Pudim de Leite</h4>
+                            <p>Tradicional pudim de leite condensado.</p>
+                        </div>
+                        <div class="menu-item-preco">
+                            <span>R$ 12,90</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Informações adicionais -->
+            <div class="cardapio-info">
+                <div class="info-box">
+                    <i class="fas fa-info-circle"></i>
+                    <p>Todas as nossas pizzas são disponíveis nos tamanhos médio (8 fatias) e grande (12 fatias). Consulte preços.</p>
+                </div>
+                <div class="info-box">
+                    <i class="fas fa-motorcycle"></i>
+                    <p>Fazemos entregas! Taxa de entrega a partir de R$ 5,00, consulte seu bairro.</p>
+                </div>
+                <div class="info-box">
+                    <i class="fas fa-credit-card"></i>
+                    <p>Aceitamos cartões de crédito, débito, Pix e dinheiro.</p>
+                </div>
+            </div>
+            
+            <div class="center">
+                <a href="#contato" class="btn">Fazer Pedido</a>
+            </div>
+        </div>
+    </section>
+
     <section id="sobre" class="sobre">
         <div class="container">
             <div class="sobre-content">
