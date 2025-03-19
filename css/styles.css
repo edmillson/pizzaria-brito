@@ -88,10 +88,48 @@ h2.fw-bold.mb-4.position-relative.pb-3::after {
     border-color: #c0392b;
 }
 
+/* Correção para ícones FontAwesome */
+.fas, .fab, .far, .fa {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    font-size: inherit;
+    vertical-align: -0.125em;
+    text-align: center;
+}
+
+/* Ícones em círculos e badges */
+.bg-danger .fas,
+.bg-danger .fab,
+.rounded-circle .fas,
+.rounded-circle .fab {
+    width: 1em;
+    height: 1em;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Ícones em botões circulares de redes sociais */
+.btn.rounded-circle {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.btn.rounded-circle i {
+    font-size: 1rem;
+}
+
 /* Estilo para o logo no footer */
 footer img {
     width: var(--logo-width-footer);
     height: var(--logo-height-footer);
+    object-fit: contain;
 }
 
 /* Ajustes para dispositivos móveis */
