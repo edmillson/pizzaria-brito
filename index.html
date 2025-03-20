@@ -3,7 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pizzaria Brito - Sabor e Qualidade</title>
+    <title>Pizzaria Brito - Melhor Pizza Artesanal em Cocal dos Alves</title>
+    <meta name="description" content="A melhor pizza da cidade! Experimente o sabor inigualável da Pizzaria Brito, com massas artesanais e ingredientes frescos. Delivery em Cocal dos Alves.">
+    <meta name="keywords" content="pizzaria brito, melhor pizza da cidade, pizzaria artesanal, pizza em Cocal dos Alves, delivery de pizza">
+    
+    <!-- Open Graph para compartilhamento em redes sociais -->
+    <meta property="og:title" content="Pizzaria Brito - Melhor Pizza Artesanal em Cocal dos Alves">
+    <meta property="og:description" content="A melhor pizza da cidade! Experimente o sabor inigualável da Pizzaria Brito, com massas artesanais e ingredientes frescos.">
+    <meta property="og:image" content="img/logo.png">
+    <meta property="og:url" content="https://www.pizzariabrito.com.br">
+    <meta property="og:type" content="website">
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -23,6 +32,42 @@
     <link rel="icon" href="img/favicon-32x32.png" type="image/png" sizes="32x32">
     <link rel="apple-touch-icon" href="img/apple-touch-icon.png" sizes="180x180">
     <meta name="theme-color" content="#e74c3c">
+    
+    <!-- Schema.org markup para o Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Pizzaria Brito",
+      "image": "img/logo.png",
+      "url": "https://www.pizzariabrito.com.br",
+      "telephone": "+5586981610248",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Belém, SN",
+        "addressLocality": "Cocal dos Alves",
+        "addressRegion": "PI",
+        "postalCode": "",
+        "addressCountry": "BR"
+      },
+      "priceRange": "$$",
+      "servesCuisine": "Italiana, Pizza",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "18:00",
+          "closes": "23:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Saturday", "Sunday"],
+          "opens": "18:00",
+          "closes": "00:00"
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
     <header>
@@ -63,8 +108,8 @@
         <div class="container py-5">
             <div class="row justify-content-center">
                 <div class="col-md-8 text-center py-4">
-                    <h2 class="display-4 fw-bold mb-4">As Melhores Pizzas da Região</h2>
-                    <p class="lead mb-4">Sabor inigualável, ingredientes frescos e muito amor em cada pedaço!</p>
+                    <h2 class="display-4 fw-bold mb-4">As Melhores Pizzas da Cidade</h2>
+                    <p class="lead mb-4">Sabor inigualável, ingredientes frescos e massa artesanal em cada pedaço! Experimente a verdadeira pizza italiana com toque brasileiro.</p>
                     <div class="d-flex justify-content-center gap-3">
                         <a href="#cardapio" class="btn btn-danger btn-lg px-4 py-2 shadow-sm">Ver Cardápio</a>
                         <a href="#contato" class="btn btn-outline-danger btn-lg px-4 py-2">Fazer Pedido</a>
@@ -76,44 +121,44 @@
 
     <section id="destaques" class="destaques py-5 bg-light">
         <div class="container py-4">
-            <h2 class="text-center fw-bold mb-5 position-relative pb-3">Pizzas em Destaque</h2>
+            <h2 class="text-center fw-bold mb-5 position-relative pb-3">Pizzas Artesanais em Destaque</h2>
             <div class="row g-4">
                 <div class="col-md-6 col-lg-3">
                     <div class="card h-100 border-0 shadow-sm rounded-3 pizza-card">
-                        <img src="img/pizza-margherita.jpg" class="card-img-top rounded-top-3" alt="Pizza Margherita">
+                        <img src="img/pizza-margherita.jpg" class="card-img-top rounded-top-3" alt="Pizza Margherita Artesanal da Pizzaria Brito">
                         <div class="card-body p-3">
                             <h3 class="h5 card-title fw-bold">Margherita</h3>
-                            <p class="card-text">Molho de tomate, mussarela, tomate e manjericão fresco.</p>
+                            <p class="card-text">Molho de tomate caseiro, mussarela fresca, tomate e manjericão fresco. A clássica e favorita da cidade.</p>
                             <span class="fw-bold text-danger fs-5">R$ 49,90</span>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="card h-100 border-0 shadow-sm rounded-3 pizza-card">
-                        <img src="img/pizza-calabresa.jpg" class="card-img-top rounded-top-3" alt="Pizza Calabresa">
+                        <img src="img/pizza-calabresa.jpg" class="card-img-top rounded-top-3" alt="Pizza de Calabresa Especial da Pizzaria Brito">
                         <div class="card-body p-3">
                             <h3 class="h5 card-title fw-bold">Calabresa</h3>
-                            <p class="card-text">Molho de tomate, mussarela, calabresa e cebola.</p>
+                            <p class="card-text">Molho de tomate caseiro, mussarela fresca, calabresa especial e cebola. Uma das mais pedidas!</p>
                             <span class="fw-bold text-danger fs-5">R$ 52,90</span>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="card h-100 border-0 shadow-sm rounded-3 pizza-card">
-                        <img src="img/pizza-portuguesa.jpg" class="card-img-top rounded-top-3" alt="Pizza Portuguesa">
+                        <img src="img/pizza-portuguesa.jpg" class="card-img-top rounded-top-3" alt="Pizza Portuguesa Tradicional da Pizzaria Brito">
                         <div class="card-body p-3">
                             <h3 class="h5 card-title fw-bold">Portuguesa</h3>
-                            <p class="card-text">Molho de tomate, mussarela, presunto, ovo, cebola e ervilha.</p>
+                            <p class="card-text">Molho de tomate caseiro, mussarela fresca, presunto, ovo, cebola e ervilha. Sabor inesquecível!</p>
                             <span class="fw-bold text-danger fs-5">R$ 55,90</span>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="card h-100 border-0 shadow-sm rounded-3 pizza-card">
-                        <img src="img/pizza-especial.jpg" class="card-img-top rounded-top-3" alt="Pizza Especial Brito">
+                        <img src="img/pizza-especial.jpg" class="card-img-top rounded-top-3" alt="Pizza Especial Brito - Exclusiva da melhor pizzaria da cidade">
                         <div class="card-body p-3">
                             <h3 class="h5 card-title fw-bold">Especial Brito</h3>
-                            <p class="card-text">Nossa pizza exclusiva com ingredientes selecionados pelo chef.</p>
+                            <p class="card-text">Nossa pizza exclusiva com ingredientes selecionados pelo chef. O verdadeiro sabor da Pizzaria Brito!</p>
                             <span class="fw-bold text-danger fs-5">R$ 59,90</span>
                         </div>
                     </div>
@@ -127,7 +172,7 @@
 
     <section id="cardapio" class="cardapio py-5">
         <div class="container py-4">
-            <h2 class="text-center fw-bold mb-5 position-relative pb-3">Nosso Cardápio</h2>
+            <h2 class="text-center fw-bold mb-5 position-relative pb-3">Cardápio Completo da Pizzaria Brito</h2>
             
             <!-- Navegação do cardápio com Bootstrap Tabs -->
             <ul class="nav nav-pills justify-content-center mb-5" id="cardapio-tab" role="tablist">
@@ -475,14 +520,14 @@
         <div class="container py-4">
             <div class="row align-items-center g-5">
                 <div class="col-lg-6">
-                    <h2 class="fw-bold mb-4 position-relative pb-3">Sobre a Pizzaria Brito</h2>
-                    <p class="lead">Desde 2005, a Pizzaria Brito tem se dedicado a oferecer as melhores pizzas da região. Nossa história começou com uma receita de família e um sonho de compartilhar o verdadeiro sabor da pizza italiana com um toque brasileiro.</p>
-                    <p>Utilizamos apenas ingredientes frescos e de alta qualidade, selecionados diariamente para garantir o melhor sabor em cada fatia. Nossa massa é preparada artesanalmente e fermentada por 24 horas, resultando em uma textura perfeita.</p>
-                    <p>Venha conhecer nossa pizzaria e sinta-se em casa com nosso ambiente acolhedor e atendimento personalizado.</p>
+                    <h2 class="fw-bold mb-4 position-relative pb-3">Sobre a Pizzaria Brito - Tradição em Pizzas Artesanais</h2>
+                    <p class="lead">Desde 2005, a Pizzaria Brito tem se dedicado a oferecer as melhores pizzas da cidade de Cocal dos Alves. Nossa história começou com uma receita de família e um sonho de compartilhar o verdadeiro sabor da pizza italiana com um toque brasileiro.</p>
+                    <p>Utilizamos apenas ingredientes frescos e de alta qualidade, selecionados diariamente para garantir o melhor sabor em cada fatia. Nossa <strong>massa artesanal</strong> é preparada com técnicas tradicionais e fermentada por 24 horas, resultando em uma textura perfeita que só encontrará na Pizzaria Brito.</p>
+                    <p>O segredo do nosso sucesso é a combinação de ingredientes premium, técnicas artesanais e muito amor pela gastronomia italiana. Venha conhecer nossa pizzaria e sinta-se em casa com nosso ambiente acolhedor e atendimento personalizado. Somos orgulhosamente considerados a <strong>melhor pizzaria da região</strong>!</p>
                 </div>
                 <div class="col-lg-6">
                     <div class="rounded-3 overflow-hidden shadow-lg">
-                        <img src="img/sobre-nos.jpg" alt="Nossa Pizzaria" class="img-fluid w-100 h-auto" style="max-height: 400px; object-fit: cover; object-position: center;">
+                        <img src="img/sobre-nos.jpg" alt="Equipe da Pizzaria Brito preparando pizzas artesanais" class="img-fluid w-100 h-auto" style="max-height: 400px; object-fit: cover; object-position: center;">
                     </div>
                 </div>
             </div>
@@ -648,6 +693,12 @@
             </div>
         </div>
     </footer>
+
+    <!-- Botão de WhatsApp Fixo -->
+    <a href="https://wa.me/5586981610248" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Contato via WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-text">Peça pelo WhatsApp</span>
+    </a>
 
     <!-- Bootstrap JS Bundle com Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

@@ -132,6 +132,69 @@ footer img {
     object-fit: contain;
 }
 
+/* Botão flutuante de WhatsApp */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-float .fab {
+    margin-top: 2px;
+}
+
+.whatsapp-float .whatsapp-text {
+    position: absolute;
+    right: 70px;
+    background-color: #25d366;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-float .whatsapp-text::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -8px;
+    transform: translateY(-50%);
+    border-width: 8px 0 8px 8px;
+    border-style: solid;
+    border-color: transparent transparent transparent #25d366;
+}
+
+.whatsapp-float:hover {
+    background-color: #128c7e;
+    transform: scale(1.05);
+    color: white;
+}
+
+.whatsapp-float:hover .whatsapp-text {
+    opacity: 1;
+    visibility: visible;
+    right: 75px;
+}
+
 /* Ajustes para dispositivos móveis */
 @media (max-width: 768px) {
     .hero {
@@ -141,6 +204,16 @@ footer img {
     h2.text-center.fw-bold.mb-5.position-relative.pb-3::after,
     h2.fw-bold.mb-4.position-relative.pb-3::after {
         width: 60px;
+    }
+    
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        font-size: 26px;
+    }
+    
+    .whatsapp-float .whatsapp-text {
+        display: none;
     }
 }
 
