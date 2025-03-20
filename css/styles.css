@@ -220,19 +220,13 @@ footer img {
 
 /* Estilos para o container de clima */
 #clima-container {
-    display: flex !important;
     align-items: flex-start;
     margin-left: 15px;
-    opacity: 1 !important;
-    visibility: visible !important;
 }
 
 #clima-info, #clima-info-mobile {
     color: var(--cor-texto-claro);
     font-size: 17px;
-    display: inline-block !important;
-    opacity: 1 !important;
-    visibility: visible !important;
     line-height: 1.2;
     font-family: 'DynaPuff', cursive;
 }
@@ -248,10 +242,6 @@ footer img {
     0% { transform: scale(1); }
     50% { transform: scale(1.1); }
     100% { transform: scale(1); }
-}
-
-#clima-info-mobile {
-    display: none !important;
 }
 
 /* Estilos para o widget de clima na versão mobile */
@@ -300,12 +290,7 @@ footer img {
         margin-top: 0.25rem;
     }
     
-    #clima-info {
-        display: none !important;
-    }
-    
     #clima-info-mobile {
-        display: block !important;
         text-align: center;
         margin: 10px 0;
         font-size: 19px;
