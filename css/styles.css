@@ -195,6 +195,29 @@ footer img {
     right: 75px;
 }
 
+/* Estilo para a assinatura do desenvolvedor no rodapé */
+.developer-signature {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    transition: color 0.3s ease;
+}
+
+.developer-signature strong {
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.developer-links a {
+    font-size: 0.85rem;
+    transition: color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.developer-links a:hover {
+    color: var(--cor-primaria) !important;
+    transform: translateY(-2px);
+}
+
 /* Ajustes para dispositivos móveis */
 @media (max-width: 768px) {
     .hero {
@@ -214,6 +237,15 @@ footer img {
     
     .whatsapp-float .whatsapp-text {
         display: none;
+    }
+
+    .developer-signature {
+        font-size: 0.8rem;
+    }
+    
+    .developer-links {
+        display: block;
+        margin-top: 0.25rem;
     }
 }
 
