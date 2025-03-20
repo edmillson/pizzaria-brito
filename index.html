@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=DynaPuff:wght@400;500;600&display=swap" rel="stylesheet">
     
     <!-- CSS Personalizado -->
     <link rel="stylesheet" href="css/styles.css">
@@ -78,9 +78,12 @@
                     <h1 class="h4 mb-0 text-danger fw-bold">Pizzaria Brito</h1>
                 </a>
                 
-                <div id="clima-container" class="d-none d-md-flex align-items-center me-auto ms-4 text-muted">
-                    <i class="fas fa-temperature-high text-danger me-2"></i>
-                    <span id="clima-info" aria-live="polite">Carregando clima...</span>
+                <div id="clima-container" class="d-flex align-items-center me-auto ms-4 text-danger">
+                    <i class="fas fa-temperature-high me-2"></i>
+                    <span id="clima-info" aria-live="polite">
+                        Hoje está 25°C em Cocal dos Alves,<br>
+                        Que tal uma <i class="fas fa-pizza-slice me-1"></i> quentinha?
+                    </span>
                 </div>
                 
                 <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" 
@@ -113,7 +116,10 @@
         <div class="container py-5">
             <div id="clima-mobile" class="d-md-none text-center rounded py-2 px-3 mb-4 bg-white bg-opacity-10 text-white">
                 <i class="fas fa-temperature-high me-2"></i>
-                <span id="clima-info-mobile">Carregando...</span>
+                <span id="clima-info-mobile">
+                    Hoje está 25°C em Cocal dos Alves,<br>
+                    Que tal uma <i class="fas fa-pizza-slice me-1"></i> quentinha?
+                </span>
             </div>
             <div class="row justify-content-center">
                 <div class="col-md-8 text-center py-4">
@@ -778,15 +784,23 @@
     <!-- Script para obter e exibir a temperatura atual -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // API key do OpenWeatherMap
-            const apiKey = '67f21fc5c6a60bbdc4f2fac6dfe6bb93';
-            const cidade = 'Cocal dos Alves';
-            const pais = 'BR';
-            
             // Elementos onde a temperatura será exibida
             const climaInfo = document.getElementById('clima-info');
             const climaInfoMobile = document.getElementById('clima-info-mobile');
-            const climaContainer = document.getElementById('clima-container');
+            
+            // Definir a mensagem de temperatura diretamente para debug
+            const mensagem = `Hoje está 25°C em Cocal dos Alves,<br>Que tal uma <i class="fas fa-pizza-slice me-1"></i> quentinha?`;
+            
+            // Atualizar os elementos com a temperatura
+            if (climaInfo) climaInfo.innerHTML = mensagem;
+            if (climaInfoMobile) climaInfoMobile.innerHTML = mensagem;
+            
+            // Após confirmar que esse código funciona, podemos reativar a integração com a API
+            // API key do OpenWeatherMap
+            /*
+            const apiKey = '67f21fc5c6a60bbdc4f2fac6dfe6bb93';
+            const cidade = 'Cocal dos Alves';
+            const pais = 'BR';
             
             // Função para converter Kelvin para Celsius
             function kelvinParaCelsius(kelvin) {
@@ -795,10 +809,6 @@
             
             // Função para obter a temperatura
             function obterTemperatura() {
-                // Exibir elemento de clima
-                climaContainer.classList.remove('d-none');
-                climaContainer.classList.add('d-flex');
-                
                 fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cidade},${pais}&appid=${apiKey}&lang=pt_br`)
                     .then(response => {
                         if (!response.ok) {
@@ -813,8 +823,8 @@
                         const mensagem = `Hoje está ${temperatura}°C em ${cidade}, Que tal uma pizza quentinha?`;
                         
                         // Atualizar os elementos com a temperatura
-                        climaInfo.innerHTML = mensagem;
-                        climaInfoMobile.innerHTML = mensagem;
+                        if (climaInfo) climaInfo.innerHTML = mensagem;
+                        if (climaInfoMobile) climaInfoMobile.innerHTML = mensagem;
                         
                         // Armazenar em cache por 30 minutos
                         const agora = new Date().getTime();
@@ -827,8 +837,8 @@
                     .catch(error => {
                         console.error('Erro ao obter temperatura:', error);
                         const mensagemErro = `Que tal uma pizza quentinha?`;
-                        climaInfo.textContent = mensagemErro;
-                        climaInfoMobile.textContent = mensagemErro;
+                        if (climaInfo) climaInfo.textContent = mensagemErro;
+                        if (climaInfoMobile) climaInfoMobile.textContent = mensagemErro;
                     });
             }
             
@@ -842,12 +852,8 @@
                 // Se o cache for mais recente que 30 minutos (1800000 ms), use-o
                 if (diferencaTempo < 1800000) {
                     const mensagem = `Hoje está ${dados.temperatura}°C em ${cidade}, Que tal uma pizza quentinha?`;
-                    climaInfo.innerHTML = mensagem;
-                    climaInfoMobile.innerHTML = mensagem;
-                    
-                    // Exibir elemento de clima
-                    climaContainer.classList.remove('d-none');
-                    climaContainer.classList.add('d-flex');
+                    if (climaInfo) climaInfo.innerHTML = mensagem;
+                    if (climaInfoMobile) climaInfoMobile.innerHTML = mensagem;
                 } else {
                     // Cache expirado, buscar novos dados
                     obterTemperatura();
@@ -856,6 +862,7 @@
                 // Sem cache, buscar novos dados
                 obterTemperatura();
             }
+            */
         });
     </script>
 </body>
