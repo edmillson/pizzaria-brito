@@ -220,17 +220,24 @@ footer img {
 
 /* Estilos para o container de clima */
 #clima-container {
-    align-items: flex-start;
+    align-items: center;
     margin-left: 15px;
     transition: opacity 0.3s ease;
+    max-width: 250px;
+    flex-wrap: nowrap;
+    display: flex !important;
 }
 
 #clima-info, #clima-info-mobile {
-    color: var(--cor-texto-claro);
+    color: var(--cor-primaria);
     font-size: 17px;
     line-height: 1.2;
     font-family: 'DynaPuff', cursive;
     transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    white-space: nowrap;
 }
 
 #clima-info .fa-pizza-slice, 
@@ -238,11 +245,19 @@ footer img {
     color: var(--cor-secundaria);
     animation: pulse 1.5s infinite;
     font-size: 18px;
+    margin-right: 4px;
+    margin-left: 4px;
 }
 
 .temperatura-valor {
     font-weight: 600;
     color: var(--cor-secundaria);
+    font-size: 1.2em;
+    margin-right: 4px;
+}
+
+.temperatura-texto {
+    display: inline-block;
 }
 
 .clima-loading {
@@ -338,5 +353,13 @@ footer img {
     /* Ajuste para visualização do clima em dispositivos muito pequenos */
     #clima-container.d-md-flex {
         display: none !important;
+    }
+}
+
+@media (max-width: 992px) {
+    #clima-container {
+        max-width: 100%;
+        margin: 10px 0;
+        justify-content: center;
     }
 } 

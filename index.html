@@ -786,6 +786,10 @@
             const climaInfo = document.getElementById('clima-info');
             const climaInfoMobile = document.getElementById('clima-info-mobile');
             
+            // Para fins de depuração - limpar o cache existente
+            console.log('Limpando cache para testes...');
+            localStorage.removeItem('dadosClima');
+            
             // API key do OpenWeatherMap
             const apiKey = '67f21fc5c6a60bbdc4f2fac6dfe6bb93';
             const cidade = 'Cocal dos Alves';
@@ -798,11 +802,13 @@
             
             // Função para formatar a mensagem de temperatura
             function formatarMensagem(temperatura) {
-                return `Hoje está <span class="temperatura-valor">${temperatura}°C</span> em ${cidade},<br>Que tal uma <i class="fas fa-pizza-slice me-1"></i> quentinha?`;
+                console.log(`Formatando mensagem para temperatura: ${temperatura}°`);
+                return `<span class="temperatura-valor">${temperatura}°</span> <span class="temperatura-texto">Que tal uma <i class="fas fa-pizza-slice"></i> quentinha?</span>`;
             }
             
             // Função para mostrar estado de carregamento
             function mostrarCarregamento() {
+                console.log('Mostrando estado de carregamento');
                 if (climaInfo) {
                     climaInfo.className = 'clima-loading';
                     climaInfo.innerHTML = '<i class="fas fa-sync fa-spin me-1"></i> Carregando temperatura...';
@@ -841,23 +847,31 @@
             
             // Função para obter a temperatura
             function obterTemperatura() {
+                console.log('Iniciando obtenção da temperatura');
+                
                 // Mostrar estado de carregamento se não houver dados em cache
                 if (!tentarUsarCache()) {
                     mostrarCarregamento();
                 }
                 
-                fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cidade},${pais}&appid=${apiKey}&lang=pt_br`, {
+                const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(cidade)},${pais}&appid=${apiKey}&lang=pt_br`;
+                console.log('URL da API:', apiUrl);
+                
+                fetch(apiUrl, {
                     cache: 'no-cache', // Evitar cache do navegador
                     timeout: 10000     // Timeout após 10 segundos
                 })
                 .then(response => {
+                    console.log(`Resposta da API: ${response.status} ${response.statusText}`);
                     if (!response.ok) {
                         throw new Error(`Erro ${response.status}: ${response.statusText}`);
                     }
                     return response.json();
                 })
                 .then(data => {
+                    console.log('Dados recebidos da API:', data);
                     const temperatura = kelvinParaCelsius(data.main.temp);
+                    console.log(`Temperatura convertida: ${temperatura}°C`);
                     
                     // Armazenar em cache por 30 minutos
                     const agora = new Date().getTime();
