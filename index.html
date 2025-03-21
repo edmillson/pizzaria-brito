@@ -80,9 +80,8 @@
                 
                 <div id="clima-container" class="d-none d-md-flex align-items-center me-auto ms-4 text-danger">
                     <i class="fas fa-temperature-high me-2"></i>
-                    <span id="clima-info" aria-live="polite">
-                        Hoje está 25°C em Cocal dos Alves,<br>
-                        Que tal uma <i class="fas fa-pizza-slice me-1"></i> quentinha?
+                    <span id="clima-info" aria-live="polite" class="clima-loading">
+                        <i class="fas fa-sync fa-spin me-1"></i> Carregando temperatura...
                     </span>
                 </div>
                 
@@ -116,9 +115,8 @@
         <div class="container py-5">
             <div id="clima-mobile" class="d-md-none text-center rounded py-2 px-3 mb-4 bg-white bg-opacity-10 text-white">
                 <i class="fas fa-temperature-high me-2"></i>
-                <span id="clima-info-mobile">
-                    Hoje está 25°C em Cocal dos Alves,<br>
-                    Que tal uma <i class="fas fa-pizza-slice me-1"></i> quentinha?
+                <span id="clima-info-mobile" class="clima-loading">
+                    <i class="fas fa-sync fa-spin me-1"></i> Carregando temperatura...
                 </span>
             </div>
             <div class="row justify-content-center">
@@ -788,16 +786,7 @@
             const climaInfo = document.getElementById('clima-info');
             const climaInfoMobile = document.getElementById('clima-info-mobile');
             
-            // Definir a mensagem de temperatura diretamente para debug
-            const mensagem = `Hoje está 25°C em Cocal dos Alves,<br>Que tal uma <i class="fas fa-pizza-slice me-1"></i> quentinha?`;
-            
-            // Atualizar os elementos com a temperatura
-            if (climaInfo) climaInfo.innerHTML = mensagem;
-            if (climaInfoMobile) climaInfoMobile.innerHTML = mensagem;
-            
-            // Após confirmar que esse código funciona, podemos reativar a integração com a API
             // API key do OpenWeatherMap
-            /*
             const apiKey = '67f21fc5c6a60bbdc4f2fac6dfe6bb93';
             const cidade = 'Cocal dos Alves';
             const pais = 'BR';
@@ -807,62 +796,136 @@
                 return Math.round(kelvin - 273.15);
             }
             
+            // Função para formatar a mensagem de temperatura
+            function formatarMensagem(temperatura) {
+                return `Hoje está <span class="temperatura-valor">${temperatura}°C</span> em ${cidade},<br>Que tal uma <i class="fas fa-pizza-slice me-1"></i> quentinha?`;
+            }
+            
+            // Função para mostrar estado de carregamento
+            function mostrarCarregamento() {
+                if (climaInfo) {
+                    climaInfo.className = 'clima-loading';
+                    climaInfo.innerHTML = '<i class="fas fa-sync fa-spin me-1"></i> Carregando temperatura...';
+                }
+                if (climaInfoMobile) {
+                    climaInfoMobile.className = 'clima-loading';
+                    climaInfoMobile.innerHTML = '<i class="fas fa-sync fa-spin me-1"></i> Carregando temperatura...';
+                }
+            }
+            
+            // Função para mostrar erro
+            function mostrarErro(mensagem) {
+                const mensagemErro = mensagem || 'Não foi possível obter a temperatura';
+                if (climaInfo) {
+                    climaInfo.className = 'clima-error';
+                    climaInfo.innerHTML = `<i class="fas fa-exclamation-triangle me-1"></i> ${mensagemErro}`;
+                }
+                if (climaInfoMobile) {
+                    climaInfoMobile.className = 'clima-error';
+                    climaInfoMobile.innerHTML = `<i class="fas fa-exclamation-triangle me-1"></i> ${mensagemErro}`;
+                }
+            }
+            
+            // Função para mostrar a temperatura
+            function mostrarTemperatura(temperatura) {
+                const mensagem = formatarMensagem(temperatura);
+                if (climaInfo) {
+                    climaInfo.className = '';
+                    climaInfo.innerHTML = mensagem;
+                }
+                if (climaInfoMobile) {
+                    climaInfoMobile.className = '';
+                    climaInfoMobile.innerHTML = mensagem;
+                }
+            }
+            
             // Função para obter a temperatura
             function obterTemperatura() {
-                fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cidade},${pais}&appid=${apiKey}&lang=pt_br`)
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Não foi possível obter os dados climáticos');
+                // Mostrar estado de carregamento se não houver dados em cache
+                if (!tentarUsarCache()) {
+                    mostrarCarregamento();
+                }
+                
+                fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cidade},${pais}&appid=${apiKey}&lang=pt_br`, {
+                    cache: 'no-cache', // Evitar cache do navegador
+                    timeout: 10000     // Timeout após 10 segundos
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Erro ${response.status}: ${response.statusText}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const temperatura = kelvinParaCelsius(data.main.temp);
+                    
+                    // Armazenar em cache por 30 minutos
+                    const agora = new Date().getTime();
+                    const cacheDados = {
+                        temperatura: temperatura,
+                        timestamp: agora
+                    };
+                    localStorage.setItem('dadosClima', JSON.stringify(cacheDados));
+                    
+                    // Exibir a temperatura
+                    mostrarTemperatura(temperatura);
+                    console.log(`Temperatura atualizada: ${temperatura}°C`);
+                })
+                .catch(error => {
+                    console.error('Erro ao obter temperatura:', error);
+                    
+                    // Tenta usar cache mesmo em caso de erro
+                    if (!tentarUsarCache()) {
+                        mostrarErro('Que tal uma pizza quentinha?');
+                    }
+                });
+            }
+            
+            // Função para tentar usar dados em cache
+            function tentarUsarCache() {
+                const dadosCache = localStorage.getItem('dadosClima');
+                if (dadosCache) {
+                    try {
+                        const dados = JSON.parse(dadosCache);
+                        if (dados && dados.temperatura) {
+                            mostrarTemperatura(dados.temperatura);
+                            console.log(`Usando temperatura em cache: ${dados.temperatura}°C`);
+                            return true;
                         }
-                        return response.json();
-                    })
-                    .then(data => {
-                        const temperatura = kelvinParaCelsius(data.main.temp);
-                        
-                        // Mensagem formatada conforme solicitado
-                        const mensagem = `Hoje está ${temperatura}°C em ${cidade}, Que tal uma pizza quentinha?`;
-                        
-                        // Atualizar os elementos com a temperatura
-                        if (climaInfo) climaInfo.innerHTML = mensagem;
-                        if (climaInfoMobile) climaInfoMobile.innerHTML = mensagem;
-                        
-                        // Armazenar em cache por 30 minutos
-                        const agora = new Date().getTime();
-                        const cacheDados = {
-                            temperatura: temperatura,
-                            timestamp: agora
-                        };
-                        localStorage.setItem('dadosClima', JSON.stringify(cacheDados));
-                    })
-                    .catch(error => {
-                        console.error('Erro ao obter temperatura:', error);
-                        const mensagemErro = `Que tal uma pizza quentinha?`;
-                        if (climaInfo) climaInfo.textContent = mensagemErro;
-                        if (climaInfoMobile) climaInfoMobile.textContent = mensagemErro;
-                    });
+                    } catch (e) {
+                        console.error('Erro ao processar cache:', e);
+                    }
+                }
+                return false;
             }
             
             // Verificar se há dados em cache e se são recentes (menos de 30 minutos)
             const dadosCache = localStorage.getItem('dadosClima');
             if (dadosCache) {
-                const dados = JSON.parse(dadosCache);
-                const agora = new Date().getTime();
-                const diferencaTempo = agora - dados.timestamp;
-                
-                // Se o cache for mais recente que 30 minutos (1800000 ms), use-o
-                if (diferencaTempo < 1800000) {
-                    const mensagem = `Hoje está ${dados.temperatura}°C em ${cidade}, Que tal uma pizza quentinha?`;
-                    if (climaInfo) climaInfo.innerHTML = mensagem;
-                    if (climaInfoMobile) climaInfoMobile.innerHTML = mensagem;
-                } else {
-                    // Cache expirado, buscar novos dados
+                try {
+                    const dados = JSON.parse(dadosCache);
+                    const agora = new Date().getTime();
+                    const diferencaTempo = agora - dados.timestamp;
+                    
+                    // Se o cache for mais recente que 30 minutos (1800000 ms), use-o
+                    if (diferencaTempo < 1800000 && dados.temperatura) {
+                        mostrarTemperatura(dados.temperatura);
+                        console.log(`Usando temperatura em cache: ${dados.temperatura}°C`);
+                        
+                        // Atualiza em segundo plano após usar o cache
+                        setTimeout(obterTemperatura, 2000);
+                    } else {
+                        // Cache expirado, buscar novos dados
+                        obterTemperatura();
+                    }
+                } catch (e) {
+                    console.error('Erro ao processar cache:', e);
                     obterTemperatura();
                 }
             } else {
                 // Sem cache, buscar novos dados
                 obterTemperatura();
             }
-            */
         });
     </script>
 </body>
