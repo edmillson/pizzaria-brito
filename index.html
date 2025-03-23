@@ -428,6 +428,21 @@
         <span class="whatsapp-text">Peça pelo WhatsApp</span>
     </a>
 
+    <!-- Boneco animado para chamar atenção ao WhatsApp -->
+    <div class="assistant-character">
+        <div class="character-body">
+            <div class="character-face">
+                <div class="character-eyes"></div>
+                <div class="character-smile"></div>
+            </div>
+            <div class="character-hand"></div>
+        </div>
+        <div class="character-speech-bubble">
+            <p>Precisa de ajuda? Chama no WhatsApp! 📲</p>
+            <div class="speech-bubble-arrow"></div>
+        </div>
+    </div>
+
     <!-- Bootstrap JS Bundle com Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     
@@ -485,6 +500,50 @@
             // Animar os cards no carregamento e no scroll
             animateCards();
             window.addEventListener('scroll', animateCards);
+            
+            // Controle do boneco animado
+            const assistantCharacter = document.querySelector('.assistant-character');
+            const speechBubble = document.querySelector('.character-speech-bubble');
+            const characterBody = document.querySelector('.character-body');
+            const whatsappFloat = document.querySelector('.whatsapp-float');
+            
+            // Mostrar o balão de fala após alguns segundos
+            setTimeout(() => {
+                speechBubble.classList.add('show');
+            }, 3000);
+            
+            // Alternar a visibilidade do balão ao clicar no boneco
+            characterBody.addEventListener('click', () => {
+                speechBubble.classList.toggle('show');
+            });
+            
+            // Direcionar para o WhatsApp ao clicar no balão
+            speechBubble.addEventListener('click', () => {
+                whatsappFloat.click();
+            });
+            
+            // Esconder o boneco quando o botão de WhatsApp for clicado
+            whatsappFloat.addEventListener('click', () => {
+                assistantCharacter.style.display = 'none';
+            });
+            
+            // Mostrar o boneco novamente se o usuário ficar inativo por um tempo
+            let inactivityTimer;
+            const resetTimer = () => {
+                clearTimeout(inactivityTimer);
+                inactivityTimer = setTimeout(() => {
+                    assistantCharacter.style.display = 'flex';
+                    speechBubble.classList.add('show');
+                }, 30000); // 30 segundos
+            };
+            
+            // Reiniciar o timer em eventos de interação
+            ['mousemove', 'click', 'keypress', 'scroll', 'touchstart'].forEach(event => {
+                window.addEventListener(event, resetTimer);
+            });
+            
+            // Iniciar o timer
+            resetTimer();
         });
     </script>
 </body>
