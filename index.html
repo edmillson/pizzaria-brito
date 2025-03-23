@@ -172,338 +172,60 @@
 
     <section id="cardapio" class="cardapio py-5">
         <div class="container py-4">
-            <h2 class="text-center fw-bold mb-5 position-relative pb-3">Cardápio Completo da Pizzaria Brito</h2>
+            <h2 class="text-center fw-bold mb-5 position-relative pb-3">Cardápio da Pizzaria Brito</h2>
             
-            <!-- Navegação do cardápio com Bootstrap Tabs -->
-            <ul class="nav nav-pills justify-content-center mb-5" id="cardapio-tab" role="tablist">
-                <li class="nav-item m-2" role="presentation">
-                    <button class="btn btn-outline-danger active px-4 py-2" id="pizzas-tradicionais-tab" 
-                            data-bs-toggle="pill" data-bs-target="#pizzas-tradicionais" 
-                            type="button" role="tab" aria-controls="pizzas-tradicionais" 
-                            aria-selected="true">Pizzas Tradicionais</button>
-                </li>
-                <li class="nav-item m-2" role="presentation">
-                    <button class="btn btn-outline-danger px-4 py-2" id="pizzas-especiais-tab" 
-                            data-bs-toggle="pill" data-bs-target="#pizzas-especiais" 
-                            type="button" role="tab" aria-controls="pizzas-especiais" 
-                            aria-selected="false">Pizzas Especiais</button>
-                </li>
-                <li class="nav-item m-2" role="presentation">
-                    <button class="btn btn-outline-danger px-4 py-2" id="bebidas-tab" 
-                            data-bs-toggle="pill" data-bs-target="#bebidas" 
-                            type="button" role="tab" aria-controls="bebidas" 
-                            aria-selected="false">Bebidas</button>
-                </li>
-                <li class="nav-item m-2" role="presentation">
-                    <button class="btn btn-outline-danger px-4 py-2" id="sobremesas-tab" 
-                            data-bs-toggle="pill" data-bs-target="#sobremesas" 
-                            type="button" role="tab" aria-controls="sobremesas" 
-                            aria-selected="false">Sobremesas</button>
-                </li>
-            </ul>
-            
-            <!-- Conteúdo do cardápio -->
-            <div class="tab-content" id="cardapio-tabContent">
-                <!-- Pizzas Tradicionais -->
-                <div class="tab-pane fade show active" id="pizzas-tradicionais" role="tabpanel" 
-                     aria-labelledby="pizzas-tradicionais-tab">
-                    <h3 class="text-center h4 mb-3">Pizzas Tradicionais</h3>
-                    <p class="text-center text-muted mb-5 col-md-8 mx-auto">Nossas pizzas tradicionais são preparadas com massa artesanal, molho de tomate caseiro e ingredientes frescos de alta qualidade.</p>
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-10 text-center">
+                    <!-- Título acima da imagem -->
+                    <h3 class="h4 mb-4">Confira Nossas Deliciosas Opções</h3>
                     
-                    <div class="row g-4">
-                        <div class="col-md-6">
-                            <div class="card border-0 shadow-sm mb-3">
-                                <div class="card-body p-4">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <h4 class="card-title h5 mb-1">Margherita</h4>
-                                        <span class="badge bg-danger rounded-pill px-3 py-2">R$ 49,90</span>
-                                    </div>
-                                    <p class="card-text text-muted mb-0">Molho de tomate, mussarela, tomate e manjericão fresco.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-6">
-                            <div class="card border-0 shadow-sm mb-3">
-                                <div class="card-body p-4">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <h4 class="card-title h5 mb-1">Calabresa</h4>
-                                        <span class="badge bg-danger rounded-pill px-3 py-2">R$ 52,90</span>
-                                    </div>
-                                    <p class="card-text text-muted mb-0">Molho de tomate, mussarela, calabresa e cebola.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-6">
-                            <div class="card border-0 shadow-sm mb-3">
-                                <div class="card-body p-4">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <h4 class="card-title h5 mb-1">Portuguesa</h4>
-                                        <span class="badge bg-danger rounded-pill px-3 py-2">R$ 55,90</span>
-                                    </div>
-                                    <p class="card-text text-muted mb-0">Molho de tomate, mussarela, presunto, ovo, cebola e ervilha.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-6">
-                            <div class="card border-0 shadow-sm mb-3">
-                                <div class="card-body p-4">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <h4 class="card-title h5 mb-1">Quatro Queijos</h4>
-                                        <span class="badge bg-danger rounded-pill px-3 py-2">R$ 56,90</span>
-                                    </div>
-                                    <p class="card-text text-muted mb-0">Molho de tomate, mussarela, provolone, parmesão e gorgonzola.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-6">
-                            <div class="card border-0 shadow-sm mb-3">
-                                <div class="card-body p-4">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <h4 class="card-title h5 mb-1">Frango com Catupiry</h4>
-                                        <span class="badge bg-danger rounded-pill px-3 py-2">R$ 54,90</span>
-                                    </div>
-                                    <p class="card-text text-muted mb-0">Molho de tomate, mussarela, frango desfiado e catupiry.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-6">
-                            <div class="card border-0 shadow-sm mb-3">
-                                <div class="card-body p-4">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <h4 class="card-title h5 mb-1">Pepperoni</h4>
-                                        <span class="badge bg-danger rounded-pill px-3 py-2">R$ 58,90</span>
-                                    </div>
-                                    <p class="card-text text-muted mb-0">Molho de tomate, mussarela e pepperoni.</p>
-                                </div>
-                            </div>
+                    <!-- Imagem do cardápio responsiva -->
+                    <div class="card mb-4 border-0 shadow">
+                        <img src="img/cardapio.jpg" class="img-fluid rounded" alt="Cardápio da Pizzaria Brito">
+                        <div class="card-body p-3 bg-light">
+                            <!-- Legenda abaixo da imagem -->
+                            <p class="card-text">Todas as nossas pizzas são preparadas com ingredientes selecionados e massa artesanal.</p>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Outras abas serão adaptadas da mesma forma -->
-                <!-- Pizzas Especiais -->
-                <div class="tab-pane fade" id="pizzas-especiais" role="tabpanel" 
-                     aria-labelledby="pizzas-especiais-tab">
-                    <h3 class="text-center h4 mb-3">Pizzas Especiais</h3>
-                    <p class="text-center text-muted mb-5 col-md-8 mx-auto">Nossas pizzas especiais combinam ingredientes exclusivos para criar sabores únicos que só encontrará aqui.</p>
                     
-                    <div class="row g-4">
-                        <div class="col-md-6">
-                            <div class="card border-0 shadow-sm mb-3">
+                    <!-- Informações adicionais -->
+                    <div class="row g-4 mt-3">
+                        <div class="col-md-4">
+                            <div class="card border-0 border-start border-danger border-4 shadow-sm h-100">
                                 <div class="card-body p-4">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <h4 class="card-title h5 mb-1">Especial Brito</h4>
-                                        <span class="badge bg-danger rounded-pill px-3 py-2">R$ 59,90</span>
+                                    <div class="d-flex">
+                                        <div class="me-3 text-danger fs-3 d-flex align-items-center justify-content-center" style="width: 40px; min-width: 40px;">
+                                            <i class="fas fa-pizza-slice"></i>
+                                        </div>
+                                        <p class="mb-0">Disponível nos tamanhos P (25cm), M (30cm) e G (35cm).</p>
                                     </div>
-                                    <p class="card-text text-muted mb-0">Nossa pizza exclusiva com calabresa, bacon, cebola caramelizada, mussarela e catupiry.</p>
                                 </div>
                             </div>
                         </div>
                         
-                        <div class="col-md-6">
-                            <div class="card border-0 shadow-sm mb-3">
+                        <div class="col-md-4">
+                            <div class="card border-0 border-start border-danger border-4 shadow-sm h-100">
                                 <div class="card-body p-4">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <h4 class="card-title h5 mb-1">Nordestina</h4>
-                                        <span class="badge bg-danger rounded-pill px-3 py-2">R$ 62,90</span>
+                                    <div class="d-flex">
+                                        <div class="me-3 text-danger fs-3 d-flex align-items-center justify-content-center" style="width: 40px; min-width: 40px;">
+                                            <i class="fas fa-motorcycle"></i>
+                                        </div>
+                                        <p class="mb-0">Entrega grátis para pedidos acima de R$ 60,00 em Cocal dos Alves.</p>
                                     </div>
-                                    <p class="card-text text-muted mb-0">Molho de tomate, mussarela, carne de sol desfiada, cebola e cream cheese.</p>
                                 </div>
                             </div>
                         </div>
                         
-                        <div class="col-md-6">
-                            <div class="card border-0 shadow-sm mb-3">
+                        <div class="col-md-4">
+                            <div class="card border-0 border-start border-danger border-4 shadow-sm h-100">
                                 <div class="card-body p-4">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <h4 class="card-title h5 mb-1">Camarão</h4>
-                                        <span class="badge bg-danger rounded-pill px-3 py-2">R$ 68,90</span>
+                                    <div class="d-flex">
+                                        <div class="me-3 text-danger fs-3 d-flex align-items-center justify-content-center" style="width: 40px; min-width: 40px;">
+                                            <i class="fas fa-credit-card"></i>
+                                        </div>
+                                        <p class="mb-0">Aceitamos cartões de crédito, débito, Pix e dinheiro.</p>
                                     </div>
-                                    <p class="card-text text-muted mb-0">Molho de tomate, mussarela, camarão ao alho e óleo, pimentão e azeitonas.</p>
                                 </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-6">
-                            <div class="card border-0 shadow-sm mb-3">
-                                <div class="card-body p-4">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <h4 class="card-title h5 mb-1">Vegetariana Especial</h4>
-                                        <span class="badge bg-danger rounded-pill px-3 py-2">R$ 56,90</span>
-                                    </div>
-                                    <p class="card-text text-muted mb-0">Molho de tomate, mussarela, abobrinha, berinjela, pimentão, cebola, tomate e rúcula.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Bebidas -->
-                <div class="tab-pane fade" id="bebidas" role="tabpanel" 
-                     aria-labelledby="bebidas-tab">
-                    <h3 class="text-center h4 mb-3">Bebidas</h3>
-                    <p class="text-center text-muted mb-5 col-md-8 mx-auto">Complemente sua refeição com nossas opções de bebidas.</p>
-                    
-                    <div class="row g-4">
-                        <div class="col-md-6">
-                            <div class="card border-0 shadow-sm mb-3">
-                                <div class="card-body p-4">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <h4 class="card-title h5 mb-1">Refrigerante Lata</h4>
-                                        <span class="badge bg-danger rounded-pill px-3 py-2">R$ 5,90</span>
-                                    </div>
-                                    <p class="card-text text-muted mb-0">Coca-Cola, Guaraná Antarctica, Fanta, Sprite.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-6">
-                            <div class="card border-0 shadow-sm mb-3">
-                                <div class="card-body p-4">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <h4 class="card-title h5 mb-1">Refrigerante 2L</h4>
-                                        <span class="badge bg-danger rounded-pill px-3 py-2">R$ 12,90</span>
-                                    </div>
-                                    <p class="card-text text-muted mb-0">Coca-Cola, Guaraná Antarctica, Fanta, Sprite.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-6">
-                            <div class="card border-0 shadow-sm mb-3">
-                                <div class="card-body p-4">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <h4 class="card-title h5 mb-1">Suco Natural</h4>
-                                        <span class="badge bg-danger rounded-pill px-3 py-2">R$ 8,90</span>
-                                    </div>
-                                    <p class="card-text text-muted mb-0">Laranja, abacaxi, maracujá, limão ou uva.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-6">
-                            <div class="card border-0 shadow-sm mb-3">
-                                <div class="card-body p-4">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <h4 class="card-title h5 mb-1">Água Mineral</h4>
-                                        <span class="badge bg-danger rounded-pill px-3 py-2">R$ 3,90</span>
-                                    </div>
-                                    <p class="card-text text-muted mb-0">Com ou sem gás (500ml).</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-6">
-                            <div class="card border-0 shadow-sm mb-3">
-                                <div class="card-body p-4">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <h4 class="card-title h5 mb-1">Cerveja</h4>
-                                        <span class="badge bg-danger rounded-pill px-3 py-2">R$ 6,90</span>
-                                    </div>
-                                    <p class="card-text text-muted mb-0">Brahma, Skol, Heineken (lata 350ml).</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Sobremesas -->
-                <div class="tab-pane fade" id="sobremesas" role="tabpanel" 
-                     aria-labelledby="sobremesas-tab">
-                    <h3 class="text-center h4 mb-3">Sobremesas</h3>
-                    <p class="text-center text-muted mb-5 col-md-8 mx-auto">Finalize sua refeição com nossas deliciosas opções de sobremesas.</p>
-                    
-                    <div class="row g-4">
-                        <div class="col-md-6">
-                            <div class="card border-0 shadow-sm mb-3">
-                                <div class="card-body p-4">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <h4 class="card-title h5 mb-1">Pizza de Chocolate</h4>
-                                        <span class="badge bg-danger rounded-pill px-3 py-2">R$ 45,90</span>
-                                    </div>
-                                    <p class="card-text text-muted mb-0">Chocolate ao leite, granulado e morangos.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-6">
-                            <div class="card border-0 shadow-sm mb-3">
-                                <div class="card-body p-4">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <h4 class="card-title h5 mb-1">Pizza de Banana</h4>
-                                        <span class="badge bg-danger rounded-pill px-3 py-2">R$ 43,90</span>
-                                    </div>
-                                    <p class="card-text text-muted mb-0">Banana, canela, leite condensado e doce de leite.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-6">
-                            <div class="card border-0 shadow-sm mb-3">
-                                <div class="card-body p-4">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <h4 class="card-title h5 mb-1">Petit Gateau</h4>
-                                        <span class="badge bg-danger rounded-pill px-3 py-2">R$ 18,90</span>
-                                    </div>
-                                    <p class="card-text text-muted mb-0">Bolo quente de chocolate com sorvete de creme.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-6">
-                            <div class="card border-0 shadow-sm mb-3">
-                                <div class="card-body p-4">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <h4 class="card-title h5 mb-1">Pudim de Leite</h4>
-                                        <span class="badge bg-danger rounded-pill px-3 py-2">R$ 12,90</span>
-                                    </div>
-                                    <p class="card-text text-muted mb-0">Tradicional pudim de leite condensado.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Informações adicionais -->
-            <div class="row mt-5 pt-3 g-4">
-                <div class="col-md-4">
-                    <div class="card border-0 border-start border-danger border-4 shadow-sm h-100">
-                        <div class="card-body p-4">
-                            <div class="d-flex">
-                                <div class="me-3 text-danger fs-3 d-flex align-items-center justify-content-center" style="width: 40px; min-width: 40px;">
-                                    <i class="fas fa-info-circle"></i>
-                                </div>
-                                <p class="mb-0">Todas as nossas pizzas são disponíveis nos tamanhos médio (8 fatias) e grande (12 fatias). Consulte preços.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card border-0 border-start border-danger border-4 shadow-sm h-100">
-                        <div class="card-body p-4">
-                            <div class="d-flex">
-                                <div class="me-3 text-danger fs-3 d-flex align-items-center justify-content-center" style="width: 40px; min-width: 40px;">
-                                    <i class="fas fa-tag"></i>
-                                </div>
-                                <p class="mb-0"><strong>Promoção Especial</strong> Promoções toda semana! Confira os descontos exclusivos. Não fazemos entrega.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card border-0 border-start border-danger border-4 shadow-sm h-100">
-                        <div class="card-body p-4">
-                            <div class="d-flex">
-                                <div class="me-3 text-danger fs-3 d-flex align-items-center justify-content-center" style="width: 40px; min-width: 40px;">
-                                    <i class="fas fa-credit-card"></i>
-                                </div>
-                                <p class="mb-0">Aceitamos cartões de crédito, débito, Pix e dinheiro.</p>
                             </div>
                         </div>
                     </div>
